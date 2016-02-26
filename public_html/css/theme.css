@@ -1,0 +1,180 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
+@font-face {
+  font-family: 'Jeffriana';
+      src: url('http://myfusionstore.com//fonts/Jeffriana_JF.eot'), 
+   /* src: url('webfont.eot?#iefix') format('embedded-opentype'),  IE6-IE8 */
+      /* url('webfont.woff2') format('woff2'), Super Modern Browsers */
+       /* url('webfont.woff') format('woff'),  Pretty Modern Browsers */
+      url('http://myfusionstore.com//fonts/Jeffriana JF.ttf');  format('truetype');  /*Safari, Android, iOS */
+      /* url('webfont.svg#svgFontName') format('svg');  Legacy iOS */
+}
+
+html {
+  height: 100%;
+
+}
+
+body {
+  background-image: url('http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/swirl_pattern.png');
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  
+}
+
+
+
+#main-nav {
+  margin-bottom: 0;
+  position: fixed;
+  width: 100%;
+  border-radius: 0;
+  z-index: 1002;
+}
+
+.row-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hide{
+display:none;
+}
+
+#search-overlay {
+  height: 100%;
+  padding: 50px 50px 0;
+  background-color: rgba(255, 255, 255, 0.84);
+  z-index: 1003;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+#q {
+  margin: 10px 0;
+  font-size: 72px;
+  font-weight: 200;
+  line-height: 72px;
+  height: auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 0;
+  box-shadow: none;
+}
+
+
+
+a:link,
+a:visited {
+  color: #d22929;
+  text-decoration: none;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.section {
+  padding: 90px 0 90px 0;
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+.mk-box-icon .icon {
+  display: inline-block;
+  margin: 0 auto;
+  line-height: 96px;
+  height: 100px;
+  width: 100px;
+  font-size: 48px;
+  color: #333333;
+}
+
+.mk-box-icon {
+  text-align: center;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.background-layer {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.flickity-page-dots {
+  bottom: 20px;
+}
+
+.flickity-page-dots .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 8px;
+  background: white;
+  border-radius: 50%;
+  filter: alpha(opacity=25);
+  opacity: 0.25;
+  cursor: pointer;
+}
+
+.close{
+    float: right;
+    color: black;
+    opacity: 1;
+}
+
+#footer {
+    border-top: 1px solid #e5e5e5;
+    background-color: white;
+}
+
+#footer-inner {
+    margin: 0 auto;
+    padding: 30px 30px 20px 30px;
+    font-size: 13px;
+    color: #999999;
+}
