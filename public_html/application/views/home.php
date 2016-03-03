@@ -2,27 +2,29 @@
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flickity@1.1.2/dist/flickity.css">  
 <script type="text/javascript" src="https://npmcdn.com/flickity@1.1.2/dist/flickity.pkgd.min.js" ></script>
 <script type='text/javascript'>
-    $(document).ready(function() {
-  var $gallery = $('#slider').flickity({  "autoPlay": 5000, "wrapAround":"true", "pauseAutoPlayOnHover": false});
-      $gallery.trigger('settle');
-  var flkty = $gallery.data('flickity');
-  $('.gallery-cell').each(function(i) {
-    var e = $(this)
-    e.data('hidden-elements', e.find('.hide'))
+    $(document).ready(function () {
+        var $gallery = $('#slider').flickity({ "autoPlay": 5000, "wrapAround": "true", "pauseAutoPlayOnHover": false });
+        $gallery.trigger('settle');
+        var flkty = $gallery.data('flickity');
+        $('.gallery-cell').each(function (i) {
+            var e = $(this)
+            e.data('hidden-elements', e.find('.hide'))
+        });
+        var previous = null;
+        $gallery.on('settle', function () {
+            if (previous !== null) $(flkty.cells[previous].element).data('hidden-elements').addClass('hide');
+            $(flkty.selectedElement).data('hidden-elements').removeClass('hide')
+            previous = flkty.selectedIndex
+        });
 
-  })
-
-   var previous = null;
-
-  $gallery.on('settle', function() {
-    if (previous !== null) $(flkty.cells[previous].element).data('hidden-elements').addClass('hide');
-    $(flkty.selectedElement).data('hidden-elements').removeClass('hide')
-    previous = flkty.selectedIndex
-  })
-  })
+       
 
  
-  
+
+    });
+
+
+
 </script>
 <style type="text/css">
 
@@ -47,7 +49,7 @@
 }
 
 #slider {
-  height: 95% !important;
+  height: 100% !important;
 }
     
     #slider .flickity-viewport{
@@ -58,6 +60,14 @@
   width: 100%;
   height: 100%;
 }
+    
+#slider .slide h1{
+        font-size: 2em;
+    }
+    
+    #slider .slide h2{
+        font-size: 1.5em;
+    }
 
 .slidesjs-pagination {
   position: absolute;
@@ -248,18 +258,18 @@ a:visited {
 
 
 
-<div id='container-fluid' class='container-fluid' style='position:relative;'>
-  <div class='row' style='height:800px' id='slide-show'>
+<div id='container-fluid' class='container-fluid' style='position:relative; height:100%'>
+  <div class='row' style='height:100%' id='slide-show'>
     <div id='slider' class='gallery ' >
       <div id='test' class='gallery-cell slide' style="background-image:url('http://demandware.edgesuite.net/sits_pod21/dw/image/v2/AAKH_PRD/on/demandware.static/-/Sites-main/default/dwa31cce4a/images/alt/FEB2015_ABINGTON_LR_073_flip.jpg');background-size: cover;background-position: center center;">
         <div class='row' style='height:100%;'>
           <div class="col-md-6 col-md-offset-2 fadeInLeft animated" style="background-color:rgba(0,0,0,.5); text-align: left;color: white; top:150px">
-            <h1 style="color:white;font-size: 59px;text-align: left;" class="">
+            <h1 style="color:white;text-align: left;" class="">
               Clean, Modern, Simple
               </h1>
 
 <h2 style="
-    font-size: 45px;
+  
 ">Your search for timeless styles ends here</h2>
 
           </div>
@@ -269,12 +279,12 @@ a:visited {
       <div id='test' class='gallery-cell slide' style="background-image:url('http://www.kotrik.com/wp-content/uploads/2016/01/ethan-allen-living-room-furniture-ethan-allen-furniture-living-room-best-furniture-design-ideas.jpg');background-size: cover;background-position: center center;">
         <div class='row' style='height:100%;'>
           <div class="col-md-6 col-md-offset-2 fadeInLeft animated hide" style="background-color:rgba(0,0,0,.5); text-align: left;color: white; top:150px">
-            <h1 style="color:white;font-size: 59px;text-align: left;" class="">
+            <h1 style="color:white;text-align: left;" class="">
               Clean, Modern, Simple
               </h1>
 
 <h2 style="
-    font-size: 45px;
+    
 ">Your search for timeless styles ends here</h2>
 
           </div>
@@ -287,8 +297,9 @@ a:visited {
   <div class='row section' style='color:white; padding:90px 0 90px 0;background-color: #91A8D0; text-align: center;'>
     <div class='row row-container'>
       
-        <h1 style="font-family: Jeffriana;
-    font-size: 200px;
+       
+        <h1  style="font-family: Jeffriana;
+    font-size: 6em;
     border: 1px solid white;
     border-radius: 100%;
     width: 1.5em;
@@ -297,10 +308,11 @@ a:visited {
     padding-top: .19em;
     padding-right: .19em;
     margin-bottom: 40px;">F</h1>
+  
     
 
       
-        <p style="color: white; font-size: 23px; font-weight: 500;">Fusion is a family owned business that was established in 2001. We are a total home décor service center providing custom window treatments, design consulting, custom upholstery and much more …anything that adds to the beauty and comfort of your home. Fusions main concern will always and forever be customer satisfaction.</p>
+        <p style="color: white; font-size: 1.2em; font-weight: 500;">Fusion is a family owned business that was established in 2001. We are a total home décor service center providing custom window treatments, design consulting, custom upholstery and much more …anything that adds to the beauty and comfort of your home. Fusions main concern will always and forever be customer satisfaction.</p>
     
     </div>
   </div>
@@ -354,5 +366,4 @@ a:visited {
     </div>
     
       
-</div>
-</div>
+
