@@ -23,6 +23,8 @@
 
       <link rel='stylesheet' type="text/css" href='http://myfusionstore.com//css/theme.css'>
 
+      <script type="text/javascript" src="http://myfusionstore.com/js/flowtype.js"></script>
+
 
    
     
@@ -49,8 +51,9 @@
   <script type="text/javascript" src="http://myfusionstore.com/js/angular.min.js"></script>
  
 
-  <script type="">
+  <script type="text/javascript">
   var Fusion = angular.module('Fusion', []);
+ 
   </script>
 
   <!-- End Angular.js -->
@@ -89,8 +92,14 @@
             
             e.preventDefault();
             search.fadeOut();
-        })
+        });
+          $('body').flowtype({
+   minimum : 500,
+   maximum : 1200
+ });
     });
+
+    
 
 
 </script>
