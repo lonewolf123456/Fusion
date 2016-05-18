@@ -11,3 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
+
+
+$hook['pre-controller'][] = function(){
+    require_once(APPPATH.'/hooks/stripe/init.php');
+};
