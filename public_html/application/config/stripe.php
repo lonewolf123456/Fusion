@@ -9,7 +9,7 @@
 */
 
 
- stripe['api_key'] ='sk_test_qt6N389SzRKelhOe6wzGMC0x';
+ $config['api_key'] ='sk_test_qt6N389SzRKelhOe6wzGMC0x';
 
 
 ?>
