@@ -13,6 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$hook['pre-controller'][] = function(){
+$hook['pre_controller'][] = function(){
     require_once(APPPATH.'/hooks/stripe/init.php');
 };
