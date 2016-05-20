@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'Jeffriana';
-      src: url('http://myfusionstore.com//fonts/Jeffriana_JF.eot'), 
+      src: url('../fonts/Jeffriana_JF.eot'), 
    /* src: url('webfont.eot?#iefix') format('embedded-opentype'),  IE6-IE8 */
       /* url('webfont.woff2') format('woff2'), Super Modern Browsers */
        /* url('webfont.woff') format('woff'),  Pretty Modern Browsers */
-      url('http://myfusionstore.com//fonts/Jeffriana JF.ttf');  format('truetype');  /*Safari, Android, iOS */
+      url('../fonts/Jeffriana JF.ttf');  format('truetype');  /*Safari, Android, iOS */
       /* url('webfont.svg#svgFontName') format('svg');  Legacy iOS */
 }
 
@@ -22,7 +22,12 @@ body {
   color: black;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
+  font-size: 16px;
   
+}
+
+p,a{
+    font-size: 16px;
 }
 
 
@@ -170,6 +175,7 @@ a:visited {
 #footer {
     border-top: 1px solid #e5e5e5;
     background-color: white;
+    margin: 0px -15px 0px -15px;
 }
 
 #footer-inner {
