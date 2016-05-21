@@ -19,11 +19,11 @@
     
       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-      <link rel="stylesheet" type="text/css" href='http://myfusionstore.com//css/animate.css'>
+      <link rel="stylesheet" type="text/css" href='../css/animate.css'>
 
-      <link rel='stylesheet' type="text/css" href='http://myfusionstore.com//css/theme.css'>
+      <link rel='stylesheet' type="text/css" href='../css/theme.css'>
 
-      <script type="text/javascript" src="http://myfusionstore.com/js/flowtype.js"></script>
+      <script type="text/javascript" src="../js/flowtype.js"></script>
 
 
    
