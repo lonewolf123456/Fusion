@@ -1,34 +1,104 @@
 Fusion.controller('productController', ['$scope', '$http', function ($scope, $http) {
-    $scope.products = [
 
-	{
+    function uniq(a) {
+        var seen = {};
+        var out = [];
+        var len = a.length;
+        var j = 0;
+        for (var i = 0; i < len; i++) {
+            var item = a[i];
+            if (seen[item] !== 1) {
+                seen[item] = 1;
+                out[j++] = item;
+            }
+        }
+        return out;
+    }
 
-	    img: 'http://demandware.edgesuite.net/aakh_prd/on/demandware.static/-/Sites-main/default/dw900b0160/images/large_gray/37-9201_748_FRONT.jpg',
-	    name: 'Julian Chest',
-	    description: 'Clean, simple, and beautiful. Inspired by eighteenth century French antiques we saw in Paris, the Julian chest is elegantly fashioned with rounded corners and fluted legs. With three drawers, it’s a stylish storage solution for many settings.',
-	    price: '1304.00',
-	    origPrice: '',
-	    colors: []
-	},
 
-	{
 
-	    img: 'http://demandware.edgesuite.net/aakh_prd/on/demandware.static/-/Sites-main/default/dwc27516fb/images/large_gray/04-5405M_5405B_front.jpg',
-	    name: 'Stellar Plush Mattres',
-	    description: 'SLEEP BY DESIGN™ ETHAN ALLEN Our mattresses are designed for a well-rested life. Our offerings include innerspring, gel, and latex constructions in ultra plush to firm options. American Craftsmanship. CertiPur-US Certified Foams. Premier home delivery, setup, & removal.',
-	    price: '',
-	    origPrice: '',
-	    colors: []
-	}];
+
+    function createAttrsHash(product, skus) {
+        var a = {};
+
+        $.each(product.attributes, function (i, value) {
+
+            a[value] = [];
+
+
+            $.each(product.skus.data, function (i, e) {
+
+                a[value].push(e.attributes[value]);
+
+                if ((typeof skus[e.attributes[value]]) == 'undefined') {
+
+                    skus[e.attributes[value]] = [];
+                }
+
+                skus[e.attributes[value]].push(e.id);
+            });
+
+            a[value] = uniq(a[value]);
+        });
+
+
+
+
+
+        return a;
+    }
+
+
+    function getSku(skus, a) {
+        var atts = [],
+            set = [],
+            sku;
+
+        $('.skuAttribute').each(function (i, e) {
+            atts.push($(this).val());
+        })
+
+        $.each(atts, function (i, e) {
+            set.push(skus[e]);
+        })
+
+
+
+        sku = _.intersection.apply(null, set)[0];
+
+
+        return _.where(a, { id: sku });
+
+
+    }
+
+
+    $http({
+        method: 'GET',
+        url: 'http://localhost:33869/index.php/product/get'
+    }).then(function success(resp) {
+
+        $scope.products = resp.data.data;
+
+
+
+    }, function failure(resp) {
+
+    });
+
 
     $scope.quickShop = {
         product: {}
     };
 
+    $scope.quickShop.groupSkus = {
+
+    }
+
 
     $scope.showMoreProducts = function (limit, offset) {
 
-        $http.get({
+        $http({
             method: 'GET',
             url: ''
         }).then(function success(resp) { }, function failure(resp) { });
@@ -39,7 +109,21 @@ Fusion.controller('productController', ['$scope', '$http', function ($scope, $ht
 
         $scope.quickShop.product = $scope.products[$index];
 
+        $scope.quickShop.product.attrs = createAttrsHash($scope.quickShop.product, $scope.quickShop.groupSkus);
+
         qs.fadeIn();
 
     }
+
+    $scope.addToCart = function () {
+
+        var sku;
+
+        sku = getSku($scope.quickShop.groupSkus, $scope.quickShop.product.skus.data)[0];
+
+        
+
+        $.post("http://localhost:33869/index.php/product/addProductToCart", { parent: sku.id, quantity: 12, price: sku.price, 'product_name': $scope.quickShop.product.name });
+
+    };
 } ])

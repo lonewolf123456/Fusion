@@ -1,3 +1,4 @@
+<?php $CI =& get_instance();?>
 <!DOCTYPE html>
 <html ng-app="Fusion" >
 <head>
@@ -7,6 +8,8 @@
    <title>Fusion</title>
   
 
+      <script
+      src  ="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
 
     
@@ -245,10 +248,12 @@ imagesLoaded('#loading-overlay .loading-section .img', function(){
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+          <li>
+              <a href="#"><span class="badge"><?php echo $CI->cart->total_items();?></span><span class="glyphicon glyphicon-shopping-cart"></span></a>
+          </li>
         <li id='search'>
-          <a href="#"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </a>
-        </li>
+          <a href="#"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+        </li>  
       </ul>
     </div>
     <!-- /.navbar-collapse -->

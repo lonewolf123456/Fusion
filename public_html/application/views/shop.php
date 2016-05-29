@@ -1,5 +1,4 @@
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
-
   <style type="text/css">
 
   .grid-item {
@@ -83,6 +82,7 @@
 
 
   <script type='text/javascript'>      //<![CDATA[
+
       window.onload = function () {
           var shopGrid = $('#shop-grid')
 
@@ -110,18 +110,19 @@
           var q = $('#quick-shop');
 
           //hide search form when close button is clicked
-          q.on('click', '.close', function (e) {
-
+          q.on('click', '#quick-shop-close', function (e) {
+              
+              console.log('clicked')
               e.preventDefault();
               q.fadeOut();
           })
 
           imagesLoaded('#shop-grid img', function () {
-              var $grid = $('.grid').masonry({
+              window.$grid = $('#shop-grid').masonry({
                   itemSelector: ".grid-item",
                   columnWidth: 236,
                   gutter: 10,
-                  isFitWidth: true
+                  isFitWidth:true
 
               });
           });
@@ -140,7 +141,7 @@
     <div  id='shop-grid' class='grid js-masonry row-container'  style='max-width:1000px; margin-bottom: 50px;'>
       <div class='grid-item' ng-repeat='product in products'>
         <div class='img-wrapper' ng-click="showQuickShop($index, showqs)">
-          <img ng-src='{{ product.img }}' />
+          <img ng-src='{{ product.skus.data[0].image }}' />
           <div class='grid-options'>
 
             <div class='quick-shop'>
@@ -165,24 +166,28 @@
      </div>
    </div>
    <!--Start Quick Shop -->
-   <div id="quick-shop" class="container-fluid">
-       <span class="glyphicon glyphicon-remove-circle close"></span>
+   <div id="quick-shop" class="container-fluid" style="">
+       <span id="quick-shop-close" class="glyphicon glyphicon-remove-circle close"></span>
     <div class="row" style="max-width:1200px; margin: 0 auto">
       <div class="col-md-6">
         <div class='img'>
-          <img ng-src="{{ quickShop.product.img }}" />
+          <img ng-src="{{  quickShop.product.skus.data[0].image }}" />
         </div>
       </div>
       <div class="col-md-6">
         <div id='itemName-itemId'>
           <h1 id='itemName' style='display:inline-block;'>{{ quickShop.product.name }}</h1>
-          <p style='vertical-align:middle; display:inline-block; margin-left:50px'>item number: <span id='itemId'></span></p>
+          <p style='vertical-align:middle; display:inline-block; margin-left:50px'>item number: {{ quickShop.product.id }} <span id='itemId'></span></p>
         </div>
         <div>
           <h3>
-            Starting at <span class='price'>{{ quickShop.product.price }}</span>
+            Starting at <span class='price'>{{ quickShop.product.skus.data[0].price | currency }}</span>
           </h3>
         </div>
+          <select class="form-control skuAttribute" ng-repeat='attribute in quickShop.product.attrs' style="width:initial;">
+  <option  ng-repeat="sku in attribute track by $index">{{ sku }}</option>
+</select>
+          <button class="btn btn-default" ng-click="addToCart()">Add To Cart</button>
         <div class="page-header" style='border-color: black'>
           <h3 style='color:black'>Product Details</h3>
         </div>

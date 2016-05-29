@@ -1,4 +1,5 @@
 <?php
+    
 /**
  * CodeIgniter
  *
@@ -56,6 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 	define('CI_VERSION', '3.0.4');
+    ini_set('MAX_EXECUTION_TIME', -1);
 
 /*
  * ------------------------------------------------------
@@ -496,6 +498,7 @@ if ( ! is_php('5.4'))
  */
 	// Mark a start point so we can benchmark the controller
 	$BM->mark('controller_execution_time_( '.$class.' / '.$method.' )_start');
+
 
 	$CI = new $class();
 
