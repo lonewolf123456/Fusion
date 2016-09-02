@@ -1,6 +1,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js" ></script>
-<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flickity@1.1.2/dist/flickity.css">  
-<script type="text/javascript" src="https://npmcdn.com/flickity@1.1.2/dist/flickity.pkgd.min.js" ></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/flickity@1.1.2/dist/flickity.css">  
+<script type="text/javascript" src="https://unpkg.com/flickity@1.1.2/dist/flickity.pkgd.min.js" ></script>
 <script type='text/javascript'>
     $(document).ready(function () {
         var $gallery = $('#slider').flickity({ "autoPlay": 5000, "wrapAround": "true", "pauseAutoPlayOnHover": false });

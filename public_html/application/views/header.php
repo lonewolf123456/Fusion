@@ -33,7 +33,7 @@
       
       
 
-      <script type="text/javascript"  src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+      <script type="text/javascript"  src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
     
   
     
